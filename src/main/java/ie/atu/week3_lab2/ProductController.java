@@ -24,4 +24,14 @@ public class ProductController {
         products.add(product);
         return ResponseEntity.ok(products);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<List> editProduct(@PathVariable int id, @RequestBody Product product) {
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getId() == id) {
+                products.set(i, product);
+            }
+        }
+        return ResponseEntity.ok(products);
+    }
 }
